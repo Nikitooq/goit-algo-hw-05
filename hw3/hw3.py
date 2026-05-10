@@ -3,13 +3,16 @@ import sys
 file_path = sys.argv[1]
 
 def parse_log_line(line: str) -> dict:
-    pass
+    line_dict = dict()
+     = line.split()
+    return line
 
 
 def load_logs(file_path: str) -> list:
     with open(file_path, "r", encoding="UTF-8") as file:
-        line = file.readlines()
-    return line
+        line = file.readline()
+    logs = parse_log_line(line)
+    return logs
 
 def filter_logs_by_level(logs: list, level:str) -> list:
     pass
