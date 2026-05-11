@@ -1,11 +1,15 @@
 import sys
+from collections import namedtuple
 
 file_path = sys.argv[1]
+level = sys.argv[2]
 
 def parse_log_line(line: str) -> dict:
-    line_dict = dict()
-     = line.split()
-    return line
+    named_lines_dict = namedtuple("Log_infos", ["date", "time", "level", "message"])
+    line = line.split()
+    message = " ".join(line[3:])
+    line_dict = named_lines_dict(line[0], line[1], line[2], message)
+    return line_dict
 
 
 def load_logs(file_path: str) -> list:
@@ -15,9 +19,16 @@ def load_logs(file_path: str) -> list:
     return logs
 
 def filter_logs_by_level(logs: list, level:str) -> list:
-    pass
+    print(
+        f"""Рівень логування | Кількість\n
+        INFO info\n
+        DEBUG debug\n
+        ERROR error\n
+        WARNING warning\n
+        """
+            )
 
-def coun_logs_by_level(logs: list) -> dict:
+def count_logs_by_level(logs: list) -> dict:
     pass
 
 
