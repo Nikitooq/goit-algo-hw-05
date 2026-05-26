@@ -1,5 +1,5 @@
 import sys
-from collections import namedtuple
+from collections import namedtuple, Counter
 
 file_path = sys.argv[1]
 level = sys.argv[2]
@@ -29,10 +29,10 @@ def filter_logs_by_level(logs: list, level:str) -> list:
             )
 
 def count_logs_by_level(logs: list) -> dict:
-    pass
+    counts = Counter(load_logs(logs))
 
 
 def display_log_counts(counts: dict):
     pass
 
-print(load_logs(file_path))
+print(count_logs_by_level(file_path))
