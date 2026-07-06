@@ -15,19 +15,27 @@ def input_error(func):
     return inner
 
 def parse_input(user_input):
-    cmd, *args = user_input.split()
+    parts = user_input.split()
+    if not parts:
+        return "", []
+    
     cmd = cmd.strip().lower()
-    return cmd, *args
+    return cmd.lower(), args
 
 @input_error
 def add_contact(args, contacts):
     name, phone = args
+    if name in contacts:
+        return "Contact already exists."    
     contacts[name] = phone
     return "Contact added."
 
 @input_error
 def change_contact(args, contacts):
     name, phone = args
+    if name not in contacts:
+        raise KeyError
+
     contacts[name] = phone
     return "Contact changed."
 
