@@ -19,7 +19,7 @@ def parse_input(user_input):
     if not parts:
         return "", []
     
-    cmd = cmd.strip().lower()
+    cmd, *args = parts
     return cmd.lower(), args
 
 @input_error
