@@ -1,7 +1,7 @@
 import re
 
 def generator_numbers(text: str):
-    pattern = r"[+-]?\d+(?:\.\d+)?"
+    pattern = r" [+-]?\d+(?:\.\d+)? "
     numbers = [float(x) for x in re.findall(pattern, text)]
     yield numbers
 
